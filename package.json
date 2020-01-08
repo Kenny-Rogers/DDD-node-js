@@ -9,6 +9,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "awilix": "^4.2.3",
     "koa": "^2.11.0",
     "mongoose": "^5.8.5"
   }
