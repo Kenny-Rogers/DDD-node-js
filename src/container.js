@@ -26,3 +26,5 @@ container.register({
   userRepository: asClass(Repository).singleton(),
   logger: asValue(logger)
 });
+
+module.exports = container;

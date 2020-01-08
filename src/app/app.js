@@ -9,3 +9,5 @@ class Application {
     await this.server.start(container);
   }
 }
+
+module.exports = Application;
