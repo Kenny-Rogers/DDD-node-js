@@ -23,3 +23,5 @@ class Entity {
     return this.id;
   }
 }
+
+module.exports = Entity;

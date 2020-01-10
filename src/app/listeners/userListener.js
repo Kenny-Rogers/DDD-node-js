@@ -11,3 +11,5 @@ class UserListener {
     }
   }
 }
+
+module.exports = UserListener;
