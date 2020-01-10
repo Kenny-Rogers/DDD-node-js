@@ -5,3 +5,5 @@ const api = (instance, method, params = []) => async ctx => {
 
   return response({ ...ctx.body, data });
 };
+
+module.exports = api;
