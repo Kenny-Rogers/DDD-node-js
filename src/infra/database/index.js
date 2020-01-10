@@ -46,3 +46,5 @@ class ManageDB {
     this.logger.debug("Database closed");
   }
 }
+
+module.exports = ManageDB;
