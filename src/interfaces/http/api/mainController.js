@@ -6,4 +6,16 @@ const api = (instance, method, params = []) => async ctx => {
   return response({ ...ctx.body, data });
 };
 
+const processArgs = (ctx, params) => {
+  let args = ctx.params[param];
+
+  args.push({
+    user: ctx.state.user,
+    ...(ctx.method === "GET"
+      ? processQueryParametersForService(ctx.query)
+      : ctx.request.body)
+  });
+
+  return args;
+};
 module.exports = api;
