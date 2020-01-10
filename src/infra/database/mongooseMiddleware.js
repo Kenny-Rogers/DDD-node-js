@@ -8,3 +8,5 @@ const autoRemove = (model, parentCollection) => async document => {
 
   for (const child of children) await child.remove();
 };
+
+module.exports = autoRemove;
