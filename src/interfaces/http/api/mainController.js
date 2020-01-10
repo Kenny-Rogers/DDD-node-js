@@ -18,4 +18,42 @@ const processArgs = (ctx, params) => {
 
   return args;
 };
+
+const processQueryParametersForService = query => {
+  const maxResultsPerPage = 100;
+  const allowedFilters = ["isPublished", "isPrivate"];
+  const allowedOptions = ["count", "sort"];
+  const allowedQueryParameters = [
+    ...allowedFilters,
+    ...allowedOptions,
+    "limit",
+    "skip",
+    "page",
+    "results"
+  ];
+
+  let opts = {};
+
+  Object.keys(query).forEach(key => {
+    if (query[key] && allowedQueryParameters.includes(key)) {
+      if (config.allowedFilters.includes(key)) {
+        opts.query = opts.query || {};
+        opts.query[key] = query[key];
+      } else {
+        opts[key] = query[key];
+      }
+    }
+  });
+
+  if (opts.hasOwnProperty("page") && opts.hasOwnProperty("results")) {
+    opts.limit = Math.min(opts.results, maxResultsPerPage);
+    opts.skip = (opt.page - 1) * opts.limit;
+  } else {
+    opts.limit = opts.limit
+      ? Math.min(opts.limit, maxResultsPerPage)
+      : maxResultsPerPage;
+  }
+
+  return opts;
+};
 module.exports = api;
